@@ -60,9 +60,7 @@
     --sidebar-border: 0 0% 17%;
     --sidebar-ring: 0 0% 100%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -86,5 +84,74 @@
     text-transform: uppercase;
     letter-spacing: 0.02em;
     line-height: 0.93;
+  }
+}
+
+@layer components {
+  /* =========================================
+     ESTILOS DEL NAVBAR OPTIMIZADOS
+  ========================================= */
+  .site-header {
+    @apply fixed top-0 left-0 w-full flex items-center justify-between;
+    z-index: 100;
+    height: 68px;
+    padding: 0 var(--px);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid hsl(var(--g700));
+  }
+
+  .site-header__logo {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+    letter-spacing: 0.22em;
+    font-weight: 400;
+    color: hsl(var(--foreground));
+    transition: color var(--transition);
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .site-header__logo:hover {
+    color: hsl(var(--g300));
+  }
+
+  .site-nav {
+    @apply hidden md:flex items-center; /* Oculto en móviles, visible en pantallas grandes */
+    gap: clamp(24px, 3.5vw, 52px);
+  }
+
+  .site-nav a {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--g300));
+    position: relative;
+    transition: color var(--transition);
+    white-space: nowrap;
+  }
+
+  .site-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; 
+    left: 0;
+    width: 0; 
+    height: 1px;
+    background: hsl(var(--foreground));
+    transition: width var(--transition);
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    color: hsl(var(--foreground));
+  }
+
+  .site-nav a:hover::after,
+  .site-nav a[aria-current="page"]::after {
+    width: 100%;
   }
 }
