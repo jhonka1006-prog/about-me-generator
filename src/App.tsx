@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import SobreMi from "./pages/SobreMi";
 import Trayectoria from "./pages/Trayectoria";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar"; // <-- IMPORTAMOS TU NUEVO MENÚ
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <Navbar /> {/* <-- AÑADIMOS EL MENÚ AQUÍ, FUERA DE LAS RUTAS */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/sobre-mi" element={<SobreMi />} />
